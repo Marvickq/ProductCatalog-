@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: product-catalog-backend
+    env: node
+    buildCommand: npm ci && npx prisma generate && npm run build
+    startCommand: npx prisma migrate deploy && node dist/index.js
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: product-catalog-db
+          property: connectionString
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "3000"
+
+databases:
+  - name: product-catalog-db
+    plan: starter
+    databaseName: product_catalog
+    ipAllowList: []
