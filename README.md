@@ -202,18 +202,7 @@ All queries use index-only scans where possible. The `LIMIT N+1` technique avoid
 - Implement cursor-based pagination for admin endpoints (no snapshot filter)
 - Add soft-delete support
 
-## Deployment
 
-### Render
-
-1. Push this repository to GitHub.
-2. In the Render Dashboard, create a **New Web Service** and connect your repo.
-3. Render will automatically detect `render.yaml`. If using manual setup:
-   - **Build Command**: `npm ci && npx prisma generate && npm run build`
-   - **Start Command**: `npx prisma migrate deploy && node dist/index.js`
-4. Create a **PostgreSQL database** on Render or use Supabase.
-5. Set the `DATABASE_URL` environment variable.
-6. Deploy.
 
 ### Supabase
 
